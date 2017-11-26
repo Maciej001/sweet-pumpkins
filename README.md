@@ -1,3 +1,1 @@
-# Sweet Pumpkins
-
-Starting point for `create-react-app`.
+# Sweet Pumpkins - Fetching data
