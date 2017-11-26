@@ -1,0 +1,107 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+	background: black;
+	height: 80px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+span, li {
+	color: white;
+}
+
+.menu {
+	display: flex;
+}
+
+.menu li {
+	margin-left: 10px;
+	list-style-type: none;
+}
+
+.subscribe {
+	margin-bottom: 30px;
+}
+
+.search-area span{
+	margin-right: 10px;
+}
+
+section {
+	background: #011B3D;
+	height: 350px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+  flex: auto;
+}
+
+h1 {
+	color: orange;
+	margin-bottom: 10px;
+}
+
+h2 {
+	margin-bottom: 30px;
+	font-weight: normal;
+	font-size: 1rem;
+	color: white;
+}
+
+button {
+	line-height: 30px;
+	padding: 0 10px;
+	background: orange;
+	color: white;
+	border: 0;
+	border-radius: 0;
+}
+
+input {
+	line-height: 30px;
+	border: 0;
+}
+
+.movies {
+ display: flex;
+}
+
+.movies li {
+	display: block;
+	margin-right: 5px;
+}
+
+.movies li:last-of-type {
+	margin-right: 0;
+}
+
+.movies img {
+	height: 150px;
+}
+
+.movie {
+	position: relative;
+	list-style-type: none;
+	margin-right: 5px;
+}
+
+.movie span {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	bottom: 0;
+	width: 100%;
+	padding: 5px 10px;
+	min-height: 50px;
+	background: rgba(0,0,0, 0.5);
+	text-align: center;
+	font-size: 12px;
+}
