@@ -1,12 +1,11 @@
 import React from "react";
-import Subscribe from "./Subscribe";
+import Navigation from './navigation/Navigation'
 import MovieList from "./MovieList";
+import './Container.css';
 
 const Container = () => (
-  <section>
-    <h1>Sweet Pumpkins</h1>
-    <h2>The easiest way to find movies on the web</h2>
-    <Subscribe />
+  <section className="container">
+    <Navigation />
     <MovieList />
   </section>
 );

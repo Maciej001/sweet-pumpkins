@@ -1,5 +1,6 @@
 import React from 'react';
 import MovieListItem from "./MovieListItem";
+import "./MovieList.css";
 
 class MovieList extends React.Component {
   state = {
