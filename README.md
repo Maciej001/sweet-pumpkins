@@ -1,1 +1,1 @@
-# Sweet Pumpkins - Selecting genres
+# Sweet Pumpkins - Navigation sliders

@@ -1,11 +1,15 @@
 import React from 'react';
+import "./Selection.css"
 
-const Selection = ({ genre, onGenreChange }) => (
-  <select value={genre} onChange={onGenreChange}>
-    <option value="comedy">Comedy</option>
-    <option value="action">Action</option>
-    <option value="drama">Drama</option>
-  </select>
+const Selection = ({ genres, genre, onGenreChange }) => (
+  <div className="selection">
+    <label>Genre</label>
+    <select value={genre} onChange={onGenreChange}>
+      {genres.map( genre => (
+        <option key={genre.id} value={genre.name}>{genre.name}</option>
+      ))}
+    </select>
+  </div>
 )
 
 export default Selection;

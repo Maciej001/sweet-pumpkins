@@ -1,0 +1,14 @@
+.selection {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+}
+
+.selection label {
+  margin-bottom: 20px;
+  color: #888;
+}
+
+.selection select {
+  max-width: 150px;
+}
