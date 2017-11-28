@@ -2,10 +2,11 @@ import React from "react";
 import "./Navigation.css";
 import Selection from "./Selection";
 import Slider from "./Slider";
+import SearchButton from './SearchButton'
 
 class Navigation extends React.Component {
   state = {
-    genre: "",
+    genre: "Action",
     genres: [],
     productionYear: {
       label: "Year",
@@ -23,7 +24,7 @@ class Navigation extends React.Component {
     },
     runtime: {
       label: "Runtime",
-      min: 1,
+      min: 0,
       max: 300,
       step: 15,
       value: { min: 60, max: 120 }
@@ -69,6 +70,18 @@ class Navigation extends React.Component {
     });
   };
 
+  onSearchButtonClick = () => {
+    const selectedGenre = this.state.genres.find( genre => genre.name === this.state.genre);
+
+    const genreId = selectedGenre.id;
+    console.log(`genreId`, genreId);
+    const productionYear = this.state.productionYear.value;
+    const rating = this.state.rating.value;
+    const runtime = this.state.runtime.value;
+
+    this.props.setUrl({ genreId, productionYear, rating, runtime });
+  }
+
   render() {
     return (
       <div className="navigation">
@@ -89,6 +102,7 @@ class Navigation extends React.Component {
           data={this.state.runtime}
           onChange={this.onRuntimeChange}
         />
+        <SearchButton onClick={this.onSearchButtonClick}/>
       </div>
     );
   }
