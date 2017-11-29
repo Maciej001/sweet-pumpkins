@@ -1,1 +1,1 @@
-# Sweet Pumpkins - Navigation sliders
+# Sweet Pumpkins - Updating movies
