@@ -23,7 +23,7 @@ class Container extends React.Component {
       `with_runtime.gte=${runtime.min}&` +
       `with_runtime.lte=${runtime.max}&`;
 
-    this.setState({ url });
+    this.setState({ url, page: 1 });
   };
 
   getUrl = () => this.state.url + `page=${this.state.page}`;
