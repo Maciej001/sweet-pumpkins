@@ -1,0 +1,16 @@
+.button {
+  padding: 10px 21px;
+  background: royalblue;
+  color: rgba(255,255,255, 0.75);
+  cursor: pointer;
+  transition: color 0.2s ease-out;
+}
+
+.button:hover {
+  color: white;
+}
+
+.button-inactive {
+  background: lightgray;
+  cursor: default;
+}

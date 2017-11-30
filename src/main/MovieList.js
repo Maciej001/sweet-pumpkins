@@ -1,6 +1,8 @@
 import React from "react";
 import MovieListItem from "./MovieListItem";
 import "./MovieList.css";
+import Button from "../components/Button";
+import ButtonRow from "../components/ButtonRow";
 
 class MovieList extends React.Component {
   state = {
@@ -9,7 +11,6 @@ class MovieList extends React.Component {
 
   storeMovies = data => {
     const movies = data.results.map(result => {
-      console.log(`result`, result);
       const {
         vote_count,
         id,
@@ -49,12 +50,33 @@ class MovieList extends React.Component {
   };
 
   render() {
+    const isPreviousActive = this.page > 1;
+    const isNextActive =
+      this.state.movies.length && this.state.movies.length === 20;
+
     return (
-      <ul className="movies">
-        {this.state.movies.map(movie => (
-          <MovieListItem key={movie.id} movie={movie} />
-        ))}
-      </ul>
+      <div>
+        <ul className="movies">
+          {this.state.movies.map(movie => (
+            <MovieListItem key={movie.id} movie={movie} />
+          ))}
+        </ul>
+        <ButtonRow>
+          <Button
+            onClick={isPreviousActive ? this.props.onPreviousPage : null}
+            isActive={isPreviousActive}
+          >
+            Previous
+          </Button>
+          <span className="page-number">{`Page ${this.props.page}`}</span>
+          <Button
+            onClick={isNextActive ? this.props.onNextPage : null}
+            isActive={isNextActive}
+          >
+            Next
+          </Button>
+        </ButtonRow>
+      </div>
     );
   }
 }

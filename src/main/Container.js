@@ -1,15 +1,18 @@
 import React from "react";
-import Navigation from './navigation/Navigation'
+import Navigation from "./navigation/Navigation";
 import MovieList from "./MovieList";
-import './Container.css';
+import "./Container.css";
 
 class Container extends React.Component {
   state = {
-    url: `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
-  }
+    url: `https://api.themoviedb.org/3/discover/movie?api_key=${process.env
+      .REACT_APP_TMDB_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`,
+    page: 1
+  };
 
   setUrl = ({ genreId, productionYear, rating, runtime }) => {
-    const url = `https://api.themoviedb.org/3/discover/movie?` +
+    const url =
+      `https://api.themoviedb.org/3/discover/movie?` +
       `api_key=${process.env.REACT_APP_TMDB_KEY}&` +
       `language=en-US&sort_by=popularity.desc&` +
       `with_genres=${genreId}&` +
@@ -18,19 +21,35 @@ class Container extends React.Component {
       `vote_average.gte=${rating.min}&` +
       `vote_average.lte=${rating.max}&` +
       `with_runtime.gte=${runtime.min}&` +
-      `with_runtime.lte=${runtime.max}&`+
-      `page=1&`;
+      `with_runtime.lte=${runtime.max}&`;
 
-    this.setState({ url })
-  }
+    this.setState({ url });
+  };
+
+  getUrl = () => this.state.url + `page=${this.state.page}`;
+
+  onPageChange = direction => {
+    const newPage = this.state.page + direction;
+    if (newPage > 0) {
+      this.setState({ page: newPage });
+    }
+  };
+
+  onPreviousPage = () => this.onPageChange(-1);
+  onNextPage = () => this.onPageChange(1);
 
   render() {
     return (
       <section className="container">
-        <Navigation setUrl={this.setUrl}/>
-        <MovieList url={this.state.url}/>
+        <Navigation setUrl={this.setUrl} />
+        <MovieList
+          url={this.getUrl()}
+          onPreviousPage={this.onPreviousPage}
+          onNextPage={this.onNextPage}
+          page={this.state.page}
+        />
       </section>
-    )
+    );
   }
 }
 
