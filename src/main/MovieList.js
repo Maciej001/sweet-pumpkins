@@ -50,7 +50,7 @@ class MovieList extends React.Component {
   };
 
   render() {
-    const isPreviousActive = this.page > 1;
+    const isPreviousActive = this.props.page > 1;
     const isNextActive =
       this.state.movies.length && this.state.movies.length === 20;
 
