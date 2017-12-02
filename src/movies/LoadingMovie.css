@@ -1,0 +1,11 @@
+.loading-movie {
+  width: 100%;
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-movie h1 {
+  color: #888;
+}

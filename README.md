@@ -1,1 +1,1 @@
-# Sweet Pumpkins - Movies Pages Navigation
+# Sweet Pumpkins - Movie Details page
