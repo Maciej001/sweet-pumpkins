@@ -35,11 +35,42 @@ class Navigation extends React.Component {
     const genresURL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${process
       .env.REACT_APP_TMDB_KEY}&language=en-US`;
 
+    const params = JSON.parse(localStorage.getItem("sweetpumpkins.params"));
+    const genreId = params ? params.genreId : null;
+
     fetch(genresURL)
       .then(response => response.json())
-      .then(data => this.setState({ genres: data.genres }))
+      .then(data => {
+        this.setState({ genres: data.genres });
+        if (genreId) {
+          const genre = data.genres.find(genre => genre.id === genreId).name;
+          this.setState({ genre });
+        }
+      })
       .catch(error => console.log(error));
+
+    if (params) {
+      this.setParams(params);
+    }
   }
+
+  setParams = params => {
+    const { productionYear, rating, runtime } = params;
+    this.setState({
+      productionYear: {
+        ...this.state.productionYear,
+        value: productionYear
+      },
+      rating: {
+        ...this.state.rating,
+        value: rating
+      },
+      runtime: {
+        ...this.state.runtime,
+        value: runtime
+      }
+    });
+  };
 
   onGenreChange = event => {
     this.setState({ genre: event.target.value });

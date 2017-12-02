@@ -10,6 +10,22 @@ class Container extends React.Component {
     page: 1
   };
 
+  componentDidMount() {
+    const params = JSON.parse(localStorage.getItem("sweetpumpkins.params"));
+    const page = localStorage.getItem("sweetpumpkins.page");
+
+    if (params) {
+      this.setUrl(params);
+    }
+    if (page) {
+      this.setState({ page });
+    }
+  }
+
+  saveParams = params => {
+    localStorage.setItem("sweetpumpkins.params", JSON.stringify(params));
+  };
+
   setUrl = ({ genreId, productionYear, rating, runtime }) => {
     const url =
       `https://api.themoviedb.org/3/discover/movie?` +
@@ -26,12 +42,18 @@ class Container extends React.Component {
     this.setState({ url, page: 1 });
   };
 
+  onSearchClick = params => {
+    this.setUrl(params);
+    this.saveParams(params);
+  };
+
   getUrl = () => this.state.url + `page=${this.state.page}`;
 
   onPageChange = direction => {
     const newPage = this.state.page + direction;
     if (newPage > 0) {
       this.setState({ page: newPage });
+      localStorage.setItem("sweetpumpkins.page", newPage);
     }
   };
 
@@ -41,7 +63,7 @@ class Container extends React.Component {
   render() {
     return (
       <section className="container">
-        <Navigation setUrl={this.setUrl} />
+        <Navigation setUrl={this.onSearchClick} />
         <MovieList
           url={this.getUrl()}
           onPreviousPage={this.onPreviousPage}
