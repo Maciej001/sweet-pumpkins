@@ -12,7 +12,7 @@ class Container extends React.Component {
 
   componentDidMount() {
     const params = JSON.parse(localStorage.getItem("sweetpumpkins.params"));
-    const page = localStorage.getItem("sweetpumpkins.page");
+    const page = JSON.parse(localStorage.getItem("sweetpumpkins.page"));
 
     if (params) {
       this.setUrl(params);
@@ -50,6 +50,7 @@ class Container extends React.Component {
   getUrl = () => this.state.url + `page=${this.state.page}`;
 
   onPageChange = direction => {
+    console.log(`this.state.page`, this.state.page);
     const newPage = this.state.page + direction;
     if (newPage > 0) {
       this.setState({ page: newPage });
